@@ -22,6 +22,8 @@ function App() {
         // fetch data from redux using time
     };
 
+    const loading = true;
+
     return (
         <div className='App'>
             <div className='btns-wrapper'>
@@ -39,8 +41,11 @@ function App() {
                         setNum(e.target.value);
                     }}
                 />
+                {loading && <p>Loading...</p>}
             </div>
-            <Line data={data} />
+            <div className='chart-wrapper'>
+                <Line data={data} />
+            </div>
         </div>
     );
 }
