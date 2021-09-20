@@ -1,25 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { Line } from 'react-chartjs-2';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const data = {
+        labels: ['11:00', '12:00'],
+        datasets: [
+            {
+                label: 'BTC',
+                data: [4000, 5000],
+                backgroundColor: 'rgba(238, 175, 0, 0.4)',
+                borderColor: 'rgba(238, 175, 0, 0.5)',
+                pointBorderColor: 'rgba(238, 175, 0, 0.7)',
+            },
+        ],
+    };
+
+    return (
+        <div className='App'>
+            <Line data={data} />
+        </div>
+    );
 }
 
 export default App;
