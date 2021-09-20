@@ -1,8 +1,11 @@
 import './App.css';
 import { Line } from 'react-chartjs-2';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import getData from './actions/bitcoinActions';
 
 function App() {
+    const dispatch = useDispatch();
     const [num, setNum] = useState(15);
 
     const data = {
@@ -20,6 +23,7 @@ function App() {
 
     const fetchData = (time) => {
         // fetch data from redux using time
+        dispatch(getData());
     };
 
     const loading = true;
