@@ -1,11 +1,12 @@
 import './App.css';
 import { Line } from 'react-chartjs-2';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import getData from './actions/bitcoinActions';
 
 function App() {
     const dispatch = useDispatch();
+    const state = useSelector((state) => state.bitcoin);
     const [num, setNum] = useState(15);
 
     const data = {
@@ -23,7 +24,7 @@ function App() {
 
     const fetchData = (time) => {
         // fetch data from redux using time
-        dispatch(getData());
+        dispatch(getData({ time, number: num }));
     };
 
     const loading = true;
@@ -45,7 +46,7 @@ function App() {
                         setNum(e.target.value);
                     }}
                 />
-                {loading && <p>Loading...</p>}
+                {state.loading && <p>Loading...</p>}
             </div>
             <div className='chart-wrapper'>
                 <Line data={data} />
